@@ -1,12 +1,12 @@
 "use server";
 
 import { transactions } from "@/db/schema/transactionSchema";
-import { connect, db } from "../../dbConnect";
+import { db } from "../../dbConnect";
 import { getUser } from "./users";
 import { revalidatePath } from "next/cache";
 
-const connectDB = async () => await connect();
-connectDB();
+// const connectDB = async () => await connect();
+// connectDB();
 
 export const addTransaction = async (e: FormData) => {
   const desc = e.get("desc") as string;

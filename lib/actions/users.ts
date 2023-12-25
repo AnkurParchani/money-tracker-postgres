@@ -6,14 +6,14 @@ import bcrypt from "bcrypt";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { users } from "@/db/schema/userSchema";
-import { connect, db } from "../../dbConnect";
+import { db } from "../../dbConnect";
 import { eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { getUserFromToken } from "../auth/getUser";
 import { transactions } from "@/db/schema/transactionSchema";
 
-const connectDB = async () => await connect();
-connectDB();
+// const connectDB = async () => await connect();
+// connectDB();
 
 // Signup
 export const signup = async (e: FormData) => {
