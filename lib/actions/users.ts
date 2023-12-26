@@ -150,10 +150,13 @@ export const deleteUser = async (e: FormData) => {
       // Deleting transactions and user
       await db.delete(transactions).where(eq(transactions.userId, user.id));
       await db.delete(users).where(eq(users.id, user.id));
+
+      cookies().delete("token");
     }
   } catch (err) {
     return console.log("Error from deleteUser", err);
   }
 
+  revalidatePath("/");
   redirect("/register");
 };
